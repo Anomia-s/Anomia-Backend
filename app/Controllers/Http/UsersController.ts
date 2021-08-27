@@ -1,28 +1,21 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import User from 'App/Models/User'
+import UserValidator from 'App/Validators/UserValidator'
 
 export default class UsersController {
-    public register({request}: HttpContextContract){
-        const body = request.body()
-        const [
-            username, 
-            email, 
-            password, 
-            passwordRep
-        
-        ] = [
-            body.username || body['username'],
-            body.email || body['email'],
-            body.password || body['password'],
-            body.passwordRep || body['passwordRep']
-        ]
-
-        if(password != passwordRep) return {
-            error: true,
-            message: 'Anon, the passwords dont match! '
+    public async register({request, auth, response}: HttpContextContract){
+      if (auth.isLoggedIn) {
+        return response.forbidden("You're logged in already.")
+      }
+		    const body = await request.validate(UserValidator)
+        await User.create(body)
+        return {
+          message: 'Account succesfully generated.'
         }
+        
     }
     public async isLoggedIn({auth}: HttpContextContract){
-       await auth.use('api')
+        await auth.use('api')
         return auth.use('api').isAuthenticated
     }
   public async login({ request, auth }: HttpContextContract) {
