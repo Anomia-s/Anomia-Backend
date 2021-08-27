@@ -5,6 +5,7 @@ export default class Bans extends BaseSchema {
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
+      
       table.increments('id');
       table.integer('userId');
       table.integer('banType') // 1 = Warn, 2 = Ban (temp), 3=term
