@@ -1,31 +1,32 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
 import UserValidator from 'App/Validators/UserValidator'
-import Ban from 'App/Models/Ban';
+import Ban from 'App/Models/Ban'
 export default class UsersController {
   // Check done thanks to our friend, Middleware!
 
-  public async ban({request}: HttpContextContract){
-    const body = request.body();
+  public async ban({ request }: HttpContextContract) {
+    const body = request.body()
 
-    const [
-      userId, reason, banType, lenght, socialCredit, admin
-    ] = [
-      body.userId, body.reason, body.banType,body.lenght,  body.socialCredit, body.admin
+    const [userId, reason, banType, lenght, socialCredit, admin] = [
+      body.userId,
+      body.reason,
+      body.banType,
+      body.lenght,
+      body.socialCredit,
+      body.admin,
     ]
 
-    try{
-
+    try {
       const user = await User.findOrFail(userId)
-      user.isBanned = 1;
+      user.isBanned = 1
 
-      user.save();
-
-    }catch(err){
-      return { 
+      user.save()
+    } catch (err) {
+      return {
         error: true,
         message: 'There was an unexpected error!',
-        errorMessage: err
+        errorMessage: err,
       }
     }
 
@@ -42,33 +43,24 @@ export default class UsersController {
 
     return {
       error: false,
-      message: `Succesfully banned user with id ${userId}.` 
+      message: `Succesfully banned user with id ${userId}.`,
     }
+  }
 
-
-
-
-
-
-
-
-  } 
-
-    public async register({request, auth, response}: HttpContextContract){
-      if (auth.isLoggedIn) {
-        return response.forbidden("You're logged in already.")
-      }
-		    const body = await request.validate(UserValidator)
-        await User.create(body)
-        return {
-          message: 'Account succesfully generated.'
-        }
-        
+  public async register({ request, auth, response }: HttpContextContract) {
+    if (auth.isLoggedIn) {
+      return response.forbidden("You're logged in already.")
     }
-    public async isLoggedIn({auth}: HttpContextContract){
-        await auth.use('api')
-        return auth.use('api').isAuthenticated
+    const body = await request.validate(UserValidator)
+    await User.create(body)
+    return {
+      message: 'Account succesfully generated.',
     }
+  }
+  public async isLoggedIn({ auth }: HttpContextContract) {
+    await auth.use('api')
+    return auth.use('api').isAuthenticated
+  }
   public async login({ request, auth }: HttpContextContract) {
     const body = request.body()
 
@@ -80,11 +72,11 @@ export default class UsersController {
 
     try {
       const token = await auth.use('api').attempt(username, password)
-      return { 
-          error: false, 
-          message: 'Logged in succesfully.', 
-          token: token 
-        }
+      return {
+        error: false,
+        message: 'Logged in succesfully.',
+        token: token,
+      }
     } catch (error) {
       return {
         error: true,
