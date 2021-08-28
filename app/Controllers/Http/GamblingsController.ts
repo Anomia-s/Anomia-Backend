@@ -1,9 +1,26 @@
-import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import UsersController from './UsersController'
-export default class GamblingsController {
+//import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+//import UsersController from './UsersController'
+//import Ws from 'providers/SocketProvider'
 
-    public async roulette({request, auth, response}){
+import { HttpContext } from "@adonisjs/http-server/build/standalone";
+
+export default class GamblingsController {
+    public async getRooms({response}: HttpContext){
+        
+    }
+    public async NewRoulette({request, auth, response}){
         const body = request.body();
+
+        const roomName = body.roomName
+        const roomDescription = body.roomDescription
+        const RouletteType = body.gameMode
+
+        if(RouletteType != 1 || 2 || 3){
+            return {
+                error: true,
+                message: 'Invalid gamemode.'
+            }
+        }
 
         /**
          * Thanks Stackoverflow.
@@ -18,18 +35,6 @@ export default class GamblingsController {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
-        let [
-            players,
-            roomId,
-            player,
-            action
-        ] =
-        [
-            body.players,
-            body.roomId,
-            body.player,
-            body.action
-        ] 
         // TODO: Make model and migration for the Russian roulette
         // Russian Roulette system:
         // A room is created and saved to the database including the bullet location.

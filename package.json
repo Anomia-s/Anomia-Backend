@@ -28,6 +28,7 @@
     "@adonisjs/lucid": "^15.0.3",
     "@adonisjs/repl": "^3.0.0",
     "@types/socket.io": "^3.0.2",
+    "colyseus": "^0.14.23",
     "luxon": "^2.0.2",
     "proxy-addr": "^2.0.7",
     "reflect-metadata": "^0.1.13",
