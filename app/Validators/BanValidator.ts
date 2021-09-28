@@ -5,14 +5,19 @@ export default class BanValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   public schema = schema.create({
-    userId: schema.number([]),
+    userId: schema.number([
+		rules.unique({
+			table: 'users',
+			column: 'id'
+		})
+	]),
     reason: schema.string({ trim: true }, [rules.minLength(3), rules.maxLength(1000)]),
     banType: schema.number([rules.range(1, 3)]),
     lenght: schema.number([]),
     socialCredit: schema.number(),
     admin: schema.number([
       rules.unique({
-        table: 'users',
+        table: 'admins',
         column: 'id',
       }),
     ]),
