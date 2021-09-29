@@ -5,6 +5,18 @@ export default class Series extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public seriesName: string
+
+  @column()
+  public seriesDescription: string
+
+  @column()
+  public seriesThumbnail: string
+
+  @column()
+  public seriesUpvotes: number
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

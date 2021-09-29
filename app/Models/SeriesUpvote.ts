@@ -5,6 +5,12 @@ export default class SeriesUpvote extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public userID: number
+
+  @column()
+  public seriesID: number
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

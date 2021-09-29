@@ -3,10 +3,10 @@ import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 export default class SeriesUpvotes extends BaseSchema {
   protected tableName = 'series_upvotes'
 
-  public async up () {
+  public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.integer('userID');
+      table.integer('userID')
       table.integer('seriesID')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
@@ -16,7 +16,7 @@ export default class SeriesUpvotes extends BaseSchema {
     })
   }
 
-  public async down () {
+  public async down() {
     this.schema.dropTable(this.tableName)
   }
 }

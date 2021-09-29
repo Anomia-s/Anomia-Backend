@@ -4,7 +4,8 @@ export default class EpProvidersController {
   public async index ({}: HttpContextContract) {
   }
 
-  public async create ({}: HttpContextContract) {
+  public async create ({request}: HttpContextContract) {
+
   }
 
   public async store ({}: HttpContextContract) {

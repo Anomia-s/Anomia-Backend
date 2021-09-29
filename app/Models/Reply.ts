@@ -5,6 +5,12 @@ export default class Reply extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public forumThread: number
+
+  @column()
+  public reply: string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

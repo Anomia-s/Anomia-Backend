@@ -5,6 +5,15 @@ export default class EpProvider extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public episodeID: number
+
+  @column()
+  public providerID: number
+
+  @column()
+  public url: string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

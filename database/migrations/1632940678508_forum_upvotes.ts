@@ -1,16 +1,13 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class Episodes extends BaseSchema {
-  protected tableName = 'episodes'
+export default class ForumUpvotes extends BaseSchema {
+  protected tableName = 'forum_upvotes'
 
-  public async up() {
-    // Individual Episode served by a certain provider.
+  public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.integer('animeID')
-      table.integer('episodeNumber')
-      table.integer('providerID')
-
+      table.integer('threadID')
+      table.integer('userID')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
@@ -19,7 +16,7 @@ export default class Episodes extends BaseSchema {
     })
   }
 
-  public async down() {
+  public async down () {
     this.schema.dropTable(this.tableName)
   }
 }
