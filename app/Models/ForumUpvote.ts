@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, BelongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, belongsTo, BelongsTo, column, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import ForumThread from 'App/Models/ForumThread'
+import EditHistory from 'App/Models/EditHistory'
 
 export default class ForumUpvote extends BaseModel {
   @column({ isPrimary: true })
@@ -17,6 +18,11 @@ export default class ForumUpvote extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @hasMany(()=> EditHistory, {
+    foreignKey: 'threadID'
+  })
+  public editHistories:
 
   @belongsTo(() => ForumThread, {
     foreignKey: 'threadID',

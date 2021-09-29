@@ -7,7 +7,6 @@ export default class ForumThreads extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.integer('userID')
-      table.integer('upvotesCount')
       table.string('threadTitle')
       table.string('threadDescription')
       table.integer('editHistory')
