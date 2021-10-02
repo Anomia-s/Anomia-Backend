@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import Episode from 'App/Models/Episode'
 
 export default class Provider extends BaseModel {
   @column({ isPrimary: true })
@@ -13,6 +14,11 @@ export default class Provider extends BaseModel {
 
   @column()
   public providerUrl: string
+
+  @hasMany(() => Episode, {
+    foreignKey: 'providerID',
+  })
+  public episodes: HasMany<typeof Episode>
 
   @column()
   public providerRep: number

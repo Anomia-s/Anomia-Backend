@@ -27,6 +27,7 @@
     "@adonisjs/core": "^5.1.0",
     "@adonisjs/lucid": "^15.0.3",
     "@adonisjs/repl": "^3.0.0",
+    "@eidellev/inertia-adonisjs": "^4.2.1",
     "@types/socket.io": "^3.0.2",
     "colyseus": "^0.14.23",
     "luxon": "^2.0.2",

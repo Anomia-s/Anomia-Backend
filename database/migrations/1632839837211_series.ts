@@ -10,6 +10,7 @@ export default class Series extends BaseSchema {
       table.string('seriesDescription')
       table.string('seriesThumbnail')
       table.integer('seriesUpvotes') // from another table.. too lol
+      table.integer('animeID')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

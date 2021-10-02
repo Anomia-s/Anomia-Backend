@@ -1,14 +1,12 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class Anime extends BaseSchema {
-  protected tableName = 'anime'
+export default class ProviderReputations extends BaseSchema {
+  protected tableName = 'provider_reputations'
 
-  public async up() {
+  public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.integer('status') // 1 = Live rn 2 = dead
-      table.string('name')
-      table.string('description')
+
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
@@ -17,7 +15,7 @@ export default class Anime extends BaseSchema {
     })
   }
 
-  public async down() {
+  public async down () {
     this.schema.dropTable(this.tableName)
   }
 }

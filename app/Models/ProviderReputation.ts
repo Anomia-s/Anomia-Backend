@@ -1,21 +1,21 @@
 import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
-import Series from 'App/Models/Series'
+import Provider from 'App/Models/Provider'
 
-export default class SeriesUpvote extends BaseModel {
+export default class ProviderReputation extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
   @column()
-  public userID: number
+  public providerID: number
 
   @column()
-  public seriesID: number
+  public userID: number
 
-  @belongsTo(() => Series, {
-    foreignKey: 'seriesID',
+  @belongsTo(() => Provider, {
+    foreignKey: 'providerID',
   })
-  public series: BelongsTo<typeof Series>
+  public provider: BelongsTo<typeof Provider>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

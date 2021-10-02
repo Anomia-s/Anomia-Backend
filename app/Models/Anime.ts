@@ -1,27 +1,22 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import Series from 'App/Models/Series'
 
 export default class Anime extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
   @column()
-  public status: number
+  public status: boolean
 
-  @column()
-  public series: number
+  @hasMany(() => Series)
+  public series: HasMany<typeof Series> // Seasons etc
 
   @column()
   public name: string
 
   @column()
   public description: string
-
-  @column()
-  public likeCount: number
-
-  @column()
-  public episodeCount: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

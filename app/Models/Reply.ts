@@ -1,11 +1,12 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import {BaseModel, belongsTo, column} from '@ioc:Adonis/Lucid/Orm'
+import ForumThread from "App/Models/ForumThread";
 
 export default class Reply extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @column()
+  @belongsTo(()=> ForumThread)
   public forumThread: number
 
   @column()

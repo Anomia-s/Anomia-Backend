@@ -9,7 +9,6 @@ export default class Providers extends BaseSchema {
       table.string('providerName')
       table.string('providerImg')
       table.string('providerUrl')
-      table.integer('providerRep')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
