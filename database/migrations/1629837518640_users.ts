@@ -7,9 +7,9 @@ export default class Users extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.string('username').notNullable()
-      table.string('email').notNullable()
+      table.string('email')
       table.string('password').notNullable()
-      table.string('image')
+      table.string('image').defaultTo('https://share.wildbook.me/Fhq3qRFKHzxE0jM7.png')
       table.integer('susCoins').defaultTo(100)
       table.integer('baka$').defaultTo(0)
       table.integer('socialCredit').defaultTo(1000)
@@ -17,7 +17,6 @@ export default class Users extends BaseSchema {
       table.integer('membership').defaultTo(1) // 1 = Normal 2 = Sussy Little Baka 3 = Epic Baka
       table.integer('isBanned').defaultTo(0)
       table.integer('isAdmin').defaultTo(0)
-      table.integer('floodCheck').defaultTo(0)
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

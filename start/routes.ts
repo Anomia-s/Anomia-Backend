@@ -23,13 +23,12 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async () => {
   return {
     apiVersion: 1,
-    time: Date.now()
+    time: Date.now(),
   }
 })
 
-
-Route.group(()=>{
-  Route.post('/test', 'UsersController.login')
-  Route.post('/check', 'UsersController.isLoggedIn')
+Route.group(() => {
+  Route.post('/register', 'UsersController.register')
+  Route.post('/login', 'UsersController.login')
+  Route.get('/check', 'UsersController.isLoggedIn')
 }).prefix('auth')
-

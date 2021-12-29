@@ -37,17 +37,16 @@ const databaseConfig: DatabaseConfig = {
     sqlite: {
       client: 'sqlite',
       connection: {
-        filename: Application.tmpPath('db.sqlite3'),
+        filename: 'database.sqlite',
       },
       migrations: {
         naturalSort: true,
       },
       useNullAsDefault: true,
       healthCheck: false,
-      debug: false,
+      debug: true,
     },
-
-  }
+  },
 }
 
 export default databaseConfig

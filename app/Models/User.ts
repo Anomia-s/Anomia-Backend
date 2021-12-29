@@ -38,9 +38,6 @@ export default class User extends BaseModel {
   @column({ columnName: 'isAdmin' })
   public isAdmin: number
 
-  @column({ columnName: 'floodCheck' })
-  public floodCheck: number
-
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

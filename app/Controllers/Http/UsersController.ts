@@ -1,10 +1,10 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
-import UserValidator from 'App/Validators/UserValidator'
 import Ban from 'App/Models/Ban'
+import RegisterValidator from '../../Validators/RegisterValidator'
 
 export default class UsersController {
-  // Check done thanks to our friend, Middleware!
+  // TODO Switch to policies
 
   public async ban({ request }: HttpContextContract) {
     const body = request.body()
@@ -49,8 +49,8 @@ export default class UsersController {
     if (auth.isLoggedIn) {
       return response.forbidden("You're logged in already.")
     }
-    const body = await request.validate(UserValidator)
-    await User.create(body)
+    const body = await request.validate(RegisterValidator)
+    User.create({ ...body })
     return {
       message: 'Account succesfully generated.',
     }
