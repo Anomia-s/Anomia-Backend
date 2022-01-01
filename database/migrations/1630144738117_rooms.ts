@@ -3,7 +3,7 @@ import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 export default class Rooms extends BaseSchema {
   protected tableName = 'rooms'
 
-  public async up () {
+  public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.string('name')
@@ -11,8 +11,8 @@ export default class Rooms extends BaseSchema {
       table.integer('maxPlayers')
       table.integer('gameMode') // 1 = Extreme, 2 = Normal, 3 = Safe
       table.integer('currentPlayer')
-      table.integer('open');
-      table.string('players');
+      table.integer('open')
+      table.string('players')
       table.json('pool')
 
       /**
@@ -23,7 +23,7 @@ export default class Rooms extends BaseSchema {
     })
   }
 
-  public async down () {
+  public async down() {
     this.schema.dropTable(this.tableName)
   }
 }

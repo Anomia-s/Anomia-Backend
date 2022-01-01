@@ -6,11 +6,11 @@ export default class BanValidator {
 
   public schema = schema.create({
     userId: schema.number([
-		rules.unique({
-			table: 'users',
-			column: 'id'
-		})
-	]),
+      rules.unique({
+        table: 'users',
+        column: 'id',
+      }),
+    ]),
     reason: schema.string({ trim: true }, [rules.minLength(3), rules.maxLength(1000)]),
     banType: schema.number([rules.range(1, 3)]),
     lenght: schema.number([]),

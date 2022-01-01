@@ -8,8 +8,6 @@ export default class EpProvider extends BaseModel {
   @column()
   public episodeID: number
 
-
-
   @column()
   public url: string
 

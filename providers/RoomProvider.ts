@@ -3,7 +3,7 @@ import { Server, RedisPresence } from 'colyseus'
 class MultiPlayer {
   public server: Server
   private booted = false
-  public core;
+  public core
   public boot() {
     /**
      * Ignore multiple calls to the boot method

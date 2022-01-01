@@ -11,14 +11,11 @@ export default class ForumThreadsController {
     const user = auth.user?.id
     const body = await request.validate(ForumValidator)
 
-
-
     const createPayload = await ForumThread.create({
       threadTitle: body.title,
       threadDescription: body.body,
       userID: user,
     })
-
   }
 
   public async store({}: HttpContextContract) {}

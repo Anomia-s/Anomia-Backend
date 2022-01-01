@@ -87,7 +87,7 @@ const authConfig: AuthConfig = {
         | of the mentioned columns to find their user record.
         |
         */
-       //@ts-expect-error
+        //@ts-expect-error
         uids: ['username'],
 
         /*

@@ -2,20 +2,19 @@ import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Ban extends BaseModel {
-  
   @column({ isPrimary: true })
   public id: number
 
-  @column({columnName: 'userId'})
+  @column({ columnName: 'userId' })
   public userId: number
 
-  @column({columnName: 'banType'})
-  public banType: number 
+  @column({ columnName: 'banType' })
+  public banType: number
 
-  @column({columnName: 'lenght'})
-  public lenght: number 
+  @column({ columnName: 'lenght' })
+  public lenght: number
 
-  @column({columnName: 'socialCredit'})
+  @column({ columnName: 'socialCredit' })
   public socialCredit: number
 
   @column()

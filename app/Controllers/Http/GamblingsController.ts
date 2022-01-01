@@ -13,7 +13,8 @@ export default class GamblingsController {
     const roomDescription = body.roomDescription
     const RouletteType = body.gameMode
 
-    if (RouletteType != 1 || 2 || 3) {
+    // eslint-disable-next-line no-constant-condition
+    if (RouletteType !== 1 || 2 || 3) {
       return {
         error: true,
         message: 'Invalid gamemode.',
